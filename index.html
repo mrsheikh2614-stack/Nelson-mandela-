@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nelson Mandela - Class 10 MCQ Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef3f9;color:#172033}
+.page{min-height:100vh;padding:25px 14px}
+.container{max-width:850px;margin:auto}
+.header{background:linear-gradient(135deg,#173b75,#2563eb);color:white;padding:28px 20px;border-radius:18px;text-align:center;margin-bottom:18px}
+.header h1{margin:0 0 8px;font-size:30px}.header p{margin:0;opacity:.9}
+.card{background:white;padding:20px;border-radius:15px;margin:14px 0;box-shadow:0 4px 15px rgba(0,0,0,.07)}
+.question{font-size:18px;font-weight:bold;margin-bottom:15px}
+.option{display:block;border:1px solid #d9e1ec;border-radius:10px;padding:12px;margin:9px 0;cursor:pointer}
+.option:hover{background:#f3f7ff}.option input{margin-right:9px}
+.actions{text-align:center;margin:25px 0}
+button{border:0;border-radius:11px;padding:13px 24px;background:#2563eb;color:white;font-weight:bold;font-size:16px;cursor:pointer}
+#resultPage{display:none}
+.resultBox{text-align:center;background:white;border-radius:18px;padding:30px;box-shadow:0 5px 20px rgba(0,0,0,.09)}
+.score{font-size:48px;font-weight:900;color:#2563eb;margin:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}
+.stat{background:#f4f7fb;border-radius:12px;padding:18px}.stat b{font-size:28px;display:block;color:#173b75}
+.review{text-align:left;margin-top:20px}
+.reviewItem{padding:14px;border-radius:11px;margin:9px 0;border:1px solid #ddd}
+.correct{background:#ecfdf3;border-color:#86efac}.wrong{background:#fef2f2;border-color:#fca5a5}
+.reviewItem b{display:block;margin-bottom:7px}
+.small{font-size:13px;color:#667085}
+.love{margin:25px 0 5px;padding:18px;border-radius:14px;background:linear-gradient(135deg,#fff1f5,#ffe4ec);color:#be185d;font-size:22px;font-weight:800;text-align:center}
+@media(max-width:600px){.stats{grid-template-columns:1fr}.header h1{font-size:24px}}
+</style>
+</head>
+<body>
+
+<section id="quizPage" class="page">
+<div class="container">
+<div class="header">
+<h1>Nelson Mandela: Long Walk to Freedom</h1>
+<p>Class 10 English • 20 MCQ Test • 1 Mark Each</p>
+</div>
+<div id="quiz"></div>
+<div class="actions"><button onclick="submitTest()">Submit Test</button></div>
+</div>
+</section>
+
+<section id="resultPage" class="page">
+<div class="container">
+<div class="header">
+<h1>Test Result</h1>
+<p>Your final performance</p>
+</div>
+<div class="resultBox">
+<div class="score" id="score"></div>
+<h2 id="resultTitle"></h2>
+<p id="resultMessage"></p>
+<div class="stats">
+<div class="stat"><b id="correctCount">0</b>Correct</div>
+<div class="stat"><b id="wrongCount">0</b>Wrong</div>
+<div class="stat"><b id="percent">0%</b>Percentage</div>
+</div>
+<div class="review">
+<h2>Answer Review</h2>
+<div id="review"></div>
+<div class="love">I love you so much baby. ❤️<br>You are the best. 🥰</div>
+</div>
+<br>
+<button onclick="location.reload()">Take Test Again</button>
+</div>
+</div>
+</section>
+
+<script>
+const questions = [{"id": 1, "q": "Where did Nelson Mandela’s inauguration take place?", "options": ["Cape Town Stadium", "Union Buildings amphitheatre in Pretoria", "Robben Island", "Johannesburg City Hall"], "answer": 1}, {"id": 2, "q": "When was Nelson Mandela inaugurated as the first black President of South Africa?", "options": ["10 May 1994", "27 April 1994", "11 February 1990", "18 July 1994"], "answer": 0}, {"id": 3, "q": "Who was inaugurated as the first black President of South Africa?", "options": ["Thabo Mbeki", "F. W. de Klerk", "Nelson Mandela", "Oliver Tambo"], "answer": 2}, {"id": 4, "q": "What does Mandela say about the system of racial domination?", "options": ["It was successful", "It created a lasting wound", "It was peaceful", "It helped everyone"], "answer": 1}, {"id": 5, "q": "What did the old system of racial domination produce?", "options": ["A society based on equality", "A society based on racial discrimination", "A wealthy society", "A peaceful world"], "answer": 1}, {"id": 6, "q": "What does Mandela say about the people of South Africa?", "options": ["They are divided forever", "They have created a society based on equality and freedom", "They dislike freedom", "They fear democracy"], "answer": 1}, {"id": 7, "q": "According to Mandela, what is the greatest wealth of a nation?", "options": ["Gold and diamonds", "Its people", "Its land", "Its buildings"], "answer": 1}, {"id": 8, "q": "What does Mandela mean by ‘twin obligations’?", "options": ["Obligations to family and country", "Obligations to school and work", "Obligations to friends and enemies", "Obligations to money and power"], "answer": 0}, {"id": 9, "q": "What were Mandela’s two obligations?", "options": ["To his family and his people", "To his country and his family", "Both A and B", "Only to himself"], "answer": 2}, {"id": 10, "q": "What did Mandela learn about courage?", "options": ["Courage means absence of fear", "Courage is the triumph over fear", "Courage means fighting everyone", "Courage means never feeling afraid"], "answer": 1}, {"id": 11, "q": "According to Mandela, who is not free?", "options": ["A person who cannot read", "A person who takes away another person’s freedom", "A person who is poor", "A person who lives alone"], "answer": 1}, {"id": 12, "q": "What does Mandela say about the oppressor?", "options": ["The oppressor is also not free", "The oppressor is always happy", "The oppressor is completely free", "The oppressor has no responsibilities"], "answer": 0}, {"id": 13, "q": "What did Mandela’s country need to overcome?", "options": ["Poverty only", "The extraordinary human disaster of racial oppression", "Lack of education only", "Natural disasters"], "answer": 1}, {"id": 14, "q": "What does Mandela say about hatred?", "options": ["It is natural and permanent", "People must be taught to hate", "No one is born hating another person", "It is necessary for freedom"], "answer": 2}, {"id": 15, "q": "What is the opposite of love according to Mandela’s idea?", "options": ["Hatred is learned, while love comes naturally", "Fear", "Courage", "Freedom"], "answer": 0}, {"id": 16, "q": "What did the inauguration symbolise?", "options": ["The end of democracy", "The triumph of freedom and democracy", "The beginning of war", "The end of South Africa"], "answer": 1}, {"id": 17, "q": "What did Mandela pay tribute to in his speech?", "options": ["The leaders who sacrificed for freedom", "Only his family", "Foreign leaders", "The army"], "answer": 0}, {"id": 18, "q": "What does Mandela say about courage and fear?", "options": ["A brave man has no fear", "The brave man is not he who does not feel afraid, but he who conquers that fear", "Fear is always stronger", "Fear should never be discussed"], "answer": 1}, {"id": 19, "q": "What does ‘apartheid’ refer to?", "options": ["A system of racial discrimination", "A democratic system", "A system of education", "A religious tradition"], "answer": 0}, {"id": 20, "q": "What is the central idea of ‘Nelson Mandela: Long Walk to Freedom’?", "options": ["The importance of wealth", "The struggle for freedom, equality and human dignity", "The history of sports", "The beauty of nature"], "answer": 1}];
+const quiz = document.getElementById("quiz");
+
+questions.forEach(item=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`
+    <div class="question">Q${item.id}. ${item.q}</div>
+    ${item.options.map((op,i)=>`
+      <label class="option">
+        <input type="radio" name="q${item.id}" value="${i}">
+        ${String.fromCharCode(65+i)}. ${op}
+      </label>`).join("")}
+  `;
+  quiz.appendChild(card);
+});
+
+function submitTest(){
+  let correct=0, wrong=0, review="";
+  questions.forEach(item=>{
+    const selected=document.querySelector(`input[name="q${item.id}"]:checked`);
+    const selectedValue=selected ? Number(selected.value) : null;
+    const isCorrect=selectedValue===item.answer;
+    if(isCorrect) correct++; else wrong++;
+    review += `
+      <div class="reviewItem ${isCorrect?'correct':'wrong'}">
+        <b>Q${item.id}. ${item.q}</b>
+        <div>Your answer: ${selected ? item.options[selectedValue] : "Not attempted"}</div>
+        <div>Correct answer: ${item.options[item.answer]}</div>
+        <div class="small">${isCorrect ? "✓ Correct — 1 mark" : "✗ Wrong — 0 marks"}</div>
+      </div>`;
+  });
+  const total=questions.length, percentage=Math.round((correct/total)*100);
+  document.getElementById("score").textContent=`${correct} / ${total}`;
+  document.getElementById("correctCount").textContent=correct;
+  document.getElementById("wrongCount").textContent=wrong;
+  document.getElementById("percent").textContent=percentage+"%";
+  document.getElementById("review").innerHTML=review+document.querySelector(".love").outerHTML;
+  if(correct===total){
+    document.getElementById("resultTitle").textContent="🎉 Excellent! All Answers Correct!";
+    document.getElementById("resultMessage").textContent="You scored full marks.";
+  }else{
+    document.getElementById("resultTitle").textContent="Your Final Score";
+    document.getElementById("resultMessage").textContent=`You got ${correct} correct and ${wrong} wrong.`;
+  }
+  document.getElementById("quizPage").style.display="none";
+  document.getElementById("resultPage").style.display="block";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
